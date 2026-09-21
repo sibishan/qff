@@ -96,6 +96,8 @@ section{padding-block:clamp(64px,10vw,120px);position:relative}
 .chips .pill b{color:var(--gold);font-weight:500}
 .chips .pill-hot{border-color:var(--pink);background:rgba(255,126,182,.14)}
 .chips .pill-hot b{color:var(--pink)}
+.pill-link{color:var(--ink);text-decoration:none;transition:border-color .15s,transform .15s}
+.pill-link:hover{border-color:var(--gold);transform:translateY(-2px)}
 .ctas{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2.2rem}
 .hosts{display:flex;align-items:center;justify-content:center;gap:1.4rem;flex-wrap:wrap;color:var(--ink-dim);font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
 .hosts a{display:block;border-radius:8px}
@@ -164,6 +166,13 @@ section{padding-block:clamp(64px,10vw,120px);position:relative}
 .slot span{color:var(--ink-dim);font-size:.93rem}
 .slot.hot b{color:var(--pink)}
 
+/* ---------- venue ---------- */
+.venue{background:var(--bg-2)}
+.venue-panel{margin-top:2.5rem;background:var(--card);border:2px solid var(--gold);border-radius:var(--radius);padding:clamp(1.5rem,4vw,2.6rem)}
+.venue .room{font-family:var(--mono);font-size:clamp(1.8rem,5.5vw,3rem);line-height:1;color:var(--gold);margin:0 0 .5rem;letter-spacing:-.02em}
+.venue .room-name{font-size:1.15rem;font-weight:700;margin:0 0 .25rem}
+.venue .addr{color:var(--ink-dim);margin:0}
+
 /* ---------- who ---------- */
 .who .split{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
 @media (max-width:820px){.who .split{grid-template-columns:1fr}}
@@ -178,7 +187,7 @@ section{padding-block:clamp(64px,10vw,120px);position:relative}
 .notice{margin-top:1.5rem;background:rgba(255,126,182,.12);border:2px dashed var(--pink);border-radius:16px;padding:1rem 1.2rem;font-size:.95rem}
 
 /* ---------- faq ---------- */
-.faq{background:var(--bg-2)}
+.faq{background:var(--bg)}
 .faq-list{max-width:820px;margin-top:2rem}
 details{background:var(--card);border-radius:18px;border:2px solid rgba(255,255,255,.08);margin-bottom:.8rem;overflow:hidden}
 details[open]{border-color:var(--gold)}
@@ -190,6 +199,7 @@ details .a{padding:0 1.3rem 1.2rem;color:var(--ink-dim)}
 details .a p:last-child{margin-bottom:0}
 
 /* ---------- sponsors ---------- */
+.sponsors{background:var(--bg-2)}
 .sponsor-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;margin-top:2rem}
 .sponsor{display:flex;align-items:center;justify-content:center;background:var(--card);border:2px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:2rem 2.6rem;min-width:min(100%,300px);transition:transform .15s,border-color .15s}
 .sponsor:hover{transform:translateY(-4px);border-color:var(--gold)}
@@ -197,7 +207,7 @@ details .a p:last-child{margin-bottom:0}
 @media (max-width:520px){.sponsor{padding:1.4rem 1.6rem;width:100%}.sponsor img{height:44px}}
 
 /* ---------- footer ---------- */
-footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(255,255,255,.08)}
+footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(255,255,255,.08)}
 .logos{display:flex;flex-wrap:wrap;gap:2.2rem 2rem;align-items:center;justify-content:center;margin-bottom:2rem}
 .logos a{display:block;border-radius:8px;color:var(--ink);text-decoration:none}
 .logos .x{color:var(--pink);font-size:2rem;line-height:1}
@@ -231,7 +241,7 @@ footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(
   "keywords": "quantum computing, Qiskit, hackathon, game jam, UTS, Sydney",
   "location": {
     "@type": "Place",
-    "name": "University of Technology Sydney",
+    "name": "The Clubhouse (CB01.03.29), UTS Tower — University of Technology Sydney",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "15 Broadway",
@@ -282,6 +292,7 @@ footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(
       <li><a href="#about">What is this</a></li>
       <li><a href="#jam">The jam</a></li>
       <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#venue">Venue</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#sponsors">Sponsors</a></li>
       <li class="always"><a class="btn btn-primary" href="#register">Register</a></li>
@@ -306,8 +317,8 @@ footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(
 
     <div class="chips">
       <span class="pill">📅 <b>Wed 7 Oct 2026</b></span>
-      <span class="pill">⏰ <b>9:00 AM – 8:00 PM</b></span>
-      <span class="pill">📍 <b id="loc">UTS (Room TBA)</b></span>
+      <span class="pill">⏰ <b>8:45 AM – 8:00 PM</b></span>
+      <a class="pill">📍 <b>The Clubhouse · CB01.03.29, UTS</b></a>
       <span class="pill">🎟 <b>Free for Quantum@UTS + ProgSoc members</b></span>
     </div>
 
@@ -461,7 +472,6 @@ footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(
           <a class="btn btn-primary" href="https://www.activateuts.com.au/clubs/quantum-society/" target="_blank" rel="noopener">Registration opens soon on ActivateUTS ↗</a>
           <a class="btn btn-ghost" href="https://discord.gg/Tc3mNRERv5" target="_blank" rel="noopener">Join our Discord ↗</a>
         </div>
-        <div class="notice">📍 <b>Venue:</b> somewhere at UTS. The exact room is currently in a superposition of several buildings and will collapse to one closer to the date. Registered attendees get an email, and we'll announce it on <a href="https://discord.gg/Tc3mNRERv5" target="_blank" rel="noopener">Discord</a> too. <button id="measure" class="pill" type="button" style="cursor:pointer;color:var(--ink);margin-left:.4em">Measure it</button></div>
         <p class="fineprint">📸 <b>Photo release:</b> we take photos and video at the event. By registering you agree that Quantum@UTS, ProgSoc, Activate UTS and IBM Quantum may use them to promote this and future events. If you'd rather not be in them, tell us at check in and we'll keep you out of frame.</p>
       </div>
       <div class="clubs">
@@ -474,6 +484,21 @@ footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(
           <div><b>Join ProgSoc</b><span>The UTS Programmers' Society. Code, coffee, questionable variable names.</span></div>
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== VENUE ====== -->
+<section class="venue" id="venue">
+  <div class="wrap">
+    <p class="eyebrow">Venue</p>
+    <h2>Where it happens:<br><span class="gradtext">the Clubhouse</span>.</h2>
+    <p style="max-width:720px;color:var(--ink-dim);font-size:1.1rem">One room, ours for the whole day, at UTS a few minutes' walk from Central. Doors open at 8:45 AM.</p>
+
+    <div class="venue-panel">
+      <p class="room">CB01.03.29</p>
+      <p class="room-name">The Clubhouse — UTS Tower (Building 1), Level 3</p>
+      <p class="addr">15 Broadway, Ultimo NSW 2007</p>
     </div>
   </div>
 </section>
@@ -519,7 +544,7 @@ footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(
       </details>
       <details>
         <summary>Where exactly at UTS?</summary>
-        <div class="a"><p>We'll confirm the room closer to the date. Registered attendees will get an email with the building, level and how to find the door, and we'll post the same on our <a href="https://discord.gg/Tc3mNRERv5" target="_blank" rel="noopener">Discord</a>.</p></div>
+        <div class="a"><p>The Clubhouse, room <b style="color:var(--ink)">CB01.03.29</b>: UTS Tower (Building 1), Level 3, 15 Broadway, Ultimo. Full directions are in the <a href="#venue">venue section</a>.</p></div>
       </details>
       <details>
         <summary>Still not sure?</summary>
@@ -573,15 +598,6 @@ footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(
     setTimeout(tick,1000);
   }
   tick();
-
-  // Measure the venue (it just decoheres again)
-  var outcomes=['UTS Building 11? …no, TBA','UTS Building 2? …nope, TBA','The Tower? …decohered, TBA','A lecture theatre, probably · TBA','UTS, Sydney · room TBA'];
-  var btn=document.getElementById('measure'),loc=document.getElementById('loc'),i=0;
-  if(btn){btn.addEventListener('click',function(){
-    loc.textContent=outcomes[Math.floor(Math.random()*(outcomes.length-1))];
-    btn.textContent='Measured. Try again';
-    setTimeout(function(){loc.textContent=outcomes[outcomes.length-1]},2200);
-  })}
 })();
 </script>
 </body>
