@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Qiskit Fall Fest 2026 @ UTS · Quantum Game Jam</title>
-<meta name="description" content="A one-day quantum game jam at UTS on 7 October 2026. Learn quantum computing and Qiskit in the morning, build a quantum game in the afternoon, demo it at night. Hosted by Quantum@UTS and ProgSoc.">
+<meta name="description" content="A one-day quantum game jam at UTS on 7 October 2026. Learn quantum computing and Qiskit in the morning, build a quantum game in the afternoon, demo it at night. $300 prize pool. Hosted by Quantum@UTS and ProgSoc.">
 <link rel="canonical" href="https://qff.quantumuts.com/">
 <meta property="og:site_name" content="Qiskit Fall Fest 2026 @ UTS">
 <meta property="og:title" content="Qiskit Fall Fest 2026 @ UTS · Quantum Game Jam">
-<meta property="og:description" content="One day. Zero quantum experience required. 7 October 2026 at UTS, Sydney.">
+<meta property="og:description" content="One day. Zero quantum experience required. $300 prize pool. 7 October 2026 at UTS, Sydney.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://qff.quantumuts.com/">
 <meta property="og:locale" content="en_AU">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="Qiskit Fall Fest 2026 @ UTS — Quantum Game Jam, 7 October 2026">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Qiskit Fall Fest 2026 @ UTS · Quantum Game Jam">
-<meta name="twitter:description" content="One day. Zero quantum experience required. 7 October 2026 at UTS, Sydney.">
+<meta name="twitter:description" content="One day. Zero quantum experience required. $300 prize pool. 7 October 2026 at UTS, Sydney.">
 <meta name="twitter:image" content="https://qff.quantumuts.com/img/og-card.png">
 <meta name="theme-color" content="#1b0a3f">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23FF7EB6'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle'%3E%F0%9F%8E%AE%3C/text%3E%3C/svg%3E">
@@ -154,6 +154,18 @@ section{padding-block:clamp(64px,10vw,120px);position:relative}
 .judge span{color:var(--ink-dim);font-size:.95rem}
 .jam-art{position:absolute;right:-40px;top:40px;width:clamp(120px,18vw,260px);opacity:.9;transform:rotate(12deg);pointer-events:none}
 @media (max-width:900px){.jam-art{display:none}}
+
+/* ---------- prize pool ---------- */
+.prizepool{margin-top:2.4rem;display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,4vw,2.6rem);align-items:center;background:linear-gradient(135deg,rgba(240,192,48,.16),rgba(255,126,182,.10));border:2px solid var(--gold);border-radius:var(--radius);padding:clamp(1.4rem,3.6vw,2.3rem);position:relative;overflow:hidden}
+.prizepool::before{content:"";position:absolute;top:-60%;right:-10%;width:340px;height:340px;background:radial-gradient(circle,rgba(240,192,48,.30),transparent 65%);pointer-events:none}
+.pp-amount{position:relative;font-family:var(--mono);display:flex;align-items:flex-start;line-height:.85;background:var(--grad-quts);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(5px 5px 0 rgba(255,126,182,.45))}
+.pp-cur{font-size:clamp(1.1rem,3vw,1.9rem);padding-top:.45em}
+.pp-num{font-size:clamp(3.6rem,12vw,6.4rem);letter-spacing:-.05em}
+.pp-copy{position:relative}
+.pp-copy h3{margin-bottom:.45rem;font-size:clamp(1.3rem,3vw,1.8rem)}
+.pp-copy p{color:var(--ink-dim);margin:0;max-width:52ch}
+.pp-copy p b{color:var(--ink)}
+@media (max-width:640px){.prizepool{grid-template-columns:1fr;text-align:center;justify-items:center}.pp-copy p{margin-inline:auto}}
 
 /* ---------- schedule ---------- */
 .schedule{background:var(--bg-2)}
@@ -291,6 +303,7 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
     <ul>
       <li><a href="#about">What is this</a></li>
       <li><a href="#jam">The jam</a></li>
+      <li><a href="#prizes">Prizes</a></li>
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#venue">Venue</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -317,9 +330,10 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
 
     <div class="chips">
       <span class="pill">📅 <b>Wed 7 Oct 2026</b></span>
-      <span class="pill">⏰ <b>8:45 AM – 8:00 PM</b></span>
+      <span class="pill">⏰ <b>9:00 AM – 8:00 PM</b></span>
       <a class="pill">📍 <b>The Clubhouse · CB01.03.29, UTS</b></a>
       <span class="pill">🎟 <b>Free for Quantum@UTS + ProgSoc members</b></span>
+      <span class="pill">🏆 <b>$300 prize pool</b></span>
     </div>
 
     <p class="cd-label">Doors open in</p>
@@ -353,7 +367,7 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
     <span>Build a game</span><span>✦</span>
     <span>Measure responsibly</span><span>✦</span>
     <span>Free for members</span><span>✦</span>
-    <span>Prizes exist, probably</span><span>✦</span>
+    <span>$300 prize pool</span><span>✦</span>
     <span>7 October 2026</span><span>✦</span>
     <!-- duplicate for seamless loop -->
     <span>0 qubits of experience required</span><span>✦</span>
@@ -361,7 +375,7 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
     <span>Build a game</span><span>✦</span>
     <span>Measure responsibly</span><span>✦</span>
     <span>Free for members</span><span>✦</span>
-    <span>Prizes exist, probably</span><span>✦</span>
+    <span>$300 prize pool</span><span>✦</span>
     <span>7 October 2026</span><span>✦</span>
   </div>
 </div>
@@ -422,7 +436,14 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
       <div><b>Understanding</b><span>Can the team explain the quantum concept behind their game, not just run it?</span></div>
       <div><b>The demo</b><span>Three minutes. Make them count.</span></div>
     </div>
-    <p style="margin-top:1.4rem;color:var(--ink-dim);font-size:.95rem">Prizes? Yes. Details closer to the event.</p>
+    <div class="prizepool" id="prizes">
+      <p class="pp-amount"><span class="pp-cur">A$</span><span class="pp-num">300</span></p>
+      <div class="pp-copy">
+        <p class="eyebrow" style="margin-bottom:.4rem">Prize pool</p>
+        <h3>Three hundred dollars, up for grabs.</h3>
+        <p>Split across the winning teams and handed out at the awards. Judged on the four things above &mdash; by humans, in the room, right after they've played your game. The exact split lands at the hackathon briefing.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -452,7 +473,7 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
         <div class="slot hot"><time>6:00 PM</time><div><b>Submissions close</b><span>Hard deadline. Very classical.</span></div></div>
         <div class="slot"><time>6:15 PM</time><div><b>Team demos</b><span>Show the room what you made.</span></div></div>
         <div class="slot"><time>7:15 PM</time><div><b>Play &amp; judging</b><span>Everyone plays everything. The judges decide.</span></div></div>
-        <div class="slot"><time>7:45 PM</time><div><b>Awards &amp; group photo</b><span>Smile like you understood entanglement.</span></div></div>
+        <div class="slot"><time>7:45 PM</time><div><b>Awards &amp; group photo</b><span>The $300 changes hands. Smile like you understood entanglement.</span></div></div>
         <div class="slot"><time>8:00 PM</time><div><b>Close</b><span>Go home. Sleep. Dream in Bloch spheres.</span></div></div>
       </div>
     </div>
@@ -545,7 +566,7 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
       </details>
       <details>
         <summary>Will there be prizes?</summary>
-        <div class="a"><p>Yes. Details closer to the event. Set your expectations somewhere between "a sticker" and "a quantum computer".</p></div>
+        <div class="a"><p>Yes &mdash; there's a <b style="color:var(--ink)">$300 prize pool</b>, split across the winning teams. We'll confirm the exact split at the hackathon briefing. There are stickers too, obviously.</p></div>
       </details>
       <details>
         <summary>Where exactly at UTS?</summary>
