@@ -201,7 +201,7 @@ section{padding-block:clamp(64px,10vw,120px);position:relative}
 .notice{margin-top:1.5rem;background:rgba(255,126,182,.12);border:2px dashed var(--pink);border-radius:16px;padding:1rem 1.2rem;font-size:.95rem}
 
 /* ---------- faq ---------- */
-.faq{background:var(--bg)}
+.faq{background:var(--bg-2)}
 .faq-list{max-width:820px;margin-top:2rem}
 details{background:var(--card);border-radius:18px;border:2px solid rgba(255,255,255,.08);margin-bottom:.8rem;overflow:hidden}
 details[open]{border-color:var(--gold)}
@@ -213,7 +213,7 @@ details .a{padding:0 1.3rem 1.2rem;color:var(--ink-dim)}
 details .a p:last-child{margin-bottom:0}
 
 /* ---------- sponsors ---------- */
-.sponsors{background:var(--bg-2)}
+.sponsors{background:var(--bg)}
 .sponsor-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;margin-top:2rem}
 .sponsor{display:flex;align-items:center;justify-content:center;background:var(--card);border:2px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:2rem 2.6rem;min-width:min(100%,300px);transition:transform .15s,border-color .15s}
 .sponsor:hover{transform:translateY(-4px);border-color:var(--gold)}
@@ -221,7 +221,7 @@ details .a p:last-child{margin-bottom:0}
 @media (max-width:520px){.sponsor{padding:1.4rem 1.6rem;width:100%}.sponsor img{height:44px}}
 
 /* ---------- footer ---------- */
-footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(255,255,255,.08)}
+footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(255,255,255,.08)}
 .logos{display:flex;flex-wrap:wrap;gap:2.2rem 2rem;align-items:center;justify-content:center;margin-bottom:2rem}
 .logos a{display:block;border-radius:8px;color:var(--ink);text-decoration:none}
 .logos .x{color:var(--pink);font-size:2rem;line-height:1}
@@ -314,6 +314,7 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
       <li><a href="#prizes">Prizes</a></li>
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#venue">Venue</a></li>
+      <li><a href="resources.html">Resources</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#sponsors">Sponsors</a></li>
       <li class="always"><a class="btn btn-primary" href="#register">Register</a></li>
@@ -535,6 +536,18 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
   </div>
 </section>
 
+<!-- ====== RESOURCES ====== -->
+<section class="resources" id="resources">
+  <div class="wrap">
+    <p class="eyebrow">Resources</p>
+    <h2>Homework,<br><span class="gradtext">but optional</span>.</h2>
+    <p style="max-width:720px;color:var(--ink-dim);font-size:1.1rem">New to Python? Warm up before the day with our beginner Python notebook. Download it or open it straight in Colab, no install needed.</p>
+    <div class="ctas" style="justify-content:flex-start;margin:2rem 0 0">
+      <a class="btn btn-primary" href="resources.html">Get the notebook →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ====== FAQ ====== -->
 <section class="faq" id="faq">
   <div class="wrap">
@@ -556,7 +569,7 @@ footer{background:var(--bg);padding-block:3rem 2rem;border-top:1px solid rgba(25
       </details>
       <details>
         <summary>Do I need to know maths or Python already?</summary>
-        <div class="a"><p>No. Before the event we'll send out beginner notebooks on basic Python and the linear algebra basics behind qubits (vectors, matrices, and why a gate is just a matrix). Work through them at your own pace and you'll walk in ready for the 9:15 AM session.</p></div>
+        <div class="a"><p>No. Before the event we'll send out beginner notebooks on basic Python and the linear algebra basics behind qubits (vectors, matrices, and why a gate is just a matrix). Work through them at your own pace and you'll walk in ready for the 9:15 AM session.</p><p><a href="resources.html">Grab the Python notebook on the Resources page →</a></p></div>
       </details>
       <details>
         <summary>What do I need to bring?</summary>
