@@ -101,6 +101,11 @@ section{padding-block:clamp(64px,10vw,120px);position:relative}
 
 /* ---------- notebooks ---------- */
 .notebooks{background:var(--bg-2)}
+.docs{background:var(--bg-2)}
+.docs .lede-sm{color:var(--ink-dim);font-size:1.1rem;max-width:640px;margin-top:1rem}
+.docs .meta{margin:1rem 0 1.4rem}
+.example .lede-sm{color:var(--ink-dim);font-size:1.1rem;max-width:640px;margin-top:1rem}
+.example .meta{margin:1rem 0 1.4rem}
 .nb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.6rem;margin-top:2.5rem}
 .card{background:var(--card);border-radius:var(--radius);padding:clamp(1.4rem,3.4vw,2rem);border:2px solid rgba(255,255,255,.08);display:flex;flex-direction:column}
 .card.gold{border-color:var(--gold)}.card.pink{border-color:var(--pink)}
@@ -227,6 +232,30 @@ footer{background:var(--bg-2);padding-block:3rem 2rem;border-top:1px solid rgba(
     <div class="notice">
       <p>Stuck on setup? That's what we're here for. Ask in the <a href="https://discord.gg/Tc3mNRERv5" target="_blank" rel="noopener">Discord</a> before the day, or grab an organiser at check in.</p>
     </div>
+  </div>
+</section>
+
+<!-- ====== DOCS ====== -->
+<section class="docs" id="docs">
+  <div class="wrap">
+    <p class="eyebrow">During the hack</p>
+    <h2>Read the <span class="gradtext">docs</span>.</h2>
+
+    <p class="lede-sm">IBM Quantum's official Qiskit guides. Mid-hack and wondering "how do I…" in Qiskit? Look it up here.</p>
+    <p class="meta">quantum.cloud.ibm.com/docs/en/guides</p>
+    <a class="btn btn-ghost" href="https://quantum.cloud.ibm.com/docs/en/guides" target="_blank" rel="noopener">Open the Qiskit docs ↗</a>
+  </div>
+</section>
+
+<!-- ====== EXAMPLE GAME ====== -->
+<section class="example" id="example">
+  <div class="wrap">
+    <p class="eyebrow">Need inspiration?</p>
+    <h2>An example <span class="gradtext">quantum game</span>.</h2>
+
+    <p class="lede-sm"><b style="color:var(--ink)">qPlinko</b> by Sibishan Ravindran. Just to be clear, we don't condone gambling. The only thing you should be betting on is your qubits, and even they can't make up their minds.</p>
+    <p class="meta">qplinko.ipynb · Google Colab</p>
+    <a class="btn btn-ghost" href="https://colab.research.google.com/drive/11ba6biRdH5w9uP9kDEBn8_MZmgW7wiob?usp=sharing" target="_blank" rel="noopener">Open qPlinko in Colab ↗</a>
   </div>
 </section>
 
