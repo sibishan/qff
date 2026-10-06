@@ -52,8 +52,8 @@ h1,h2,h3,p{margin:0}
 .label strong{color:var(--gold);font-weight:500}
 .time{display:flex;align-items:flex-start;justify-content:center;gap:clamp(4px,1.5vw,24px);font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums;line-height:.9}
 .unit{display:flex;flex-direction:column;align-items:center;gap:.4rem}
-.num{font-size:clamp(3.2rem,min(16vw,24vh),19rem);letter-spacing:-.04em;background:var(--grad-quts);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none}
-.sep{font-size:clamp(3.2rem,min(16vw,24vh),19rem);color:var(--lav);opacity:.6}
+.num{font-size:clamp(3.2rem,min(15vw,19vh),19rem);letter-spacing:-.04em;background:var(--grad-quts);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none}
+.sep{font-size:clamp(3.2rem,min(15vw,19vh),19rem);color:var(--lav);opacity:.6}
 .cap{font-family:var(--mono);font-size:clamp(.7rem,1.2vw,1rem);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim)}
 .days{display:none}
 .has-days .days{display:flex}
@@ -62,23 +62,25 @@ h1,h2,h3,p{margin:0}
 .done .time{display:none}
 .done .done-msg{display:block}
 
-/* ---------- help ---------- */
-.help{padding-bottom:clamp(24px,4vh,48px)}
-.help h2{font-size:clamp(1.4rem,2.6vw,2.4rem);margin-bottom:clamp(12px,2vh,24px)}
-.cards{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:clamp(12px,1.6vw,24px)}
-.card{display:flex;flex-direction:column;gap:.6rem;min-width:0;padding:clamp(20px,2.4vw,36px);background:var(--card);border-radius:var(--radius)}
-.card svg{width:clamp(36px,3.4vw,52px);height:auto;color:var(--gold);flex:none}
-.card h3{font-size:clamp(1.3rem,2vw,2rem)}
-.card p{font-size:clamp(1rem,1.4vw,1.4rem);color:var(--ink-dim);line-height:1.4}
-.tag{font-family:var(--mono);color:var(--gold);font-size:clamp(1rem,1.5vw,1.5rem);overflow-wrap:anywhere}
-.card.res{flex-direction:row;align-items:center;gap:clamp(16px,2vw,32px);border:3px solid var(--pink)}
-.card.res .txt{display:flex;flex-direction:column;gap:.6rem;min-width:0}
-.qr{flex:none;width:clamp(120px,min(13vw,20vh),200px);padding:10px;background:var(--ink);border-radius:16px}
+/* ---------- help + submit ---------- */
+.bottom{display:grid;grid-template-columns:3fr 1fr;gap:clamp(12px,1.6vw,24px);padding-bottom:clamp(16px,3vh,40px)}
+.bottom section{display:flex;flex-direction:column;min-width:0}
+.bottom h2{font-size:clamp(1.3rem,min(2.4vw,4vh),2.2rem);line-height:1.1;margin-bottom:clamp(10px,1.6vh,20px)}
+.submit h2{color:var(--pink)}
+.cards{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,24px)}
+.card{flex:1;display:flex;flex-direction:column;gap:.6rem;min-width:0;padding:clamp(16px,min(1.8vw,3vh),32px);background:var(--card);border-radius:var(--radius)}
+.card svg{width:clamp(32px,min(3vw,5vh),48px);height:auto;color:var(--gold);flex:none}
+.card h3{font-size:clamp(1.2rem,min(1.8vw,3.2vh),1.9rem);line-height:1.15}
+.card p{font-size:clamp(.95rem,min(1.3vw,2.3vh),1.35rem);color:var(--ink-dim);line-height:1.35}
+.tag{font-family:var(--mono);color:var(--gold);font-size:clamp(.9rem,1.3vw,1.3rem);overflow-wrap:anywhere}
+.card.res{border:3px solid var(--lav)}
+.card.sub{border:3px solid var(--pink)}
+.qr{flex:none;width:clamp(100px,min(9vw,14vh),160px);padding:8px;background:var(--ink);border-radius:14px;margin-bottom:.4rem}
+@media (max-width:1100px){
+  .bottom{grid-template-columns:1fr}
+}
 @media (max-width:900px){
   .cards{grid-template-columns:1fr}
-}
-@media (max-width:480px){
-  .card.res{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -111,30 +113,37 @@ h1,h2,h3,p{margin:0}
   <p class="done-msg">Time's up. Hands off!</p>
 </main>
 
-<section class="wrap help" aria-labelledby="help-title">
-  <h2 id="help-title">Stuck? Get help</h2>
-  <div class="cards">
-    <div class="card">
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M17 14c2.8 0 4.5 2 4.5 5"/></svg>
-      <h3>Ask a mentor</h3>
-      <p>Mentors are walking around the room all afternoon. Wave one down.</p>
-    </div>
-    <div class="card">
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4V5z"/></svg>
-      <h3>Post in Discord</h3>
-      <p>Ask anything, however basic.</p>
-      <p class="tag">#qff-help-chat</p>
-    </div>
-    <div class="card res">
-      <img class="qr" src="img/resources-qr.png" alt="QR code for the resources page" width="1140" height="1140">
-      <div class="txt">
+<div class="wrap bottom">
+  <section class="help" aria-labelledby="help-title">
+    <h2 id="help-title">Stuck? Get help</h2>
+    <div class="cards">
+      <div class="card">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M17 14c2.8 0 4.5 2 4.5 5"/></svg>
+        <h3>Ask a mentor</h3>
+        <p>Mentors are walking around the room all afternoon. Wave one down.</p>
+      </div>
+      <div class="card">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4V5z"/></svg>
+        <h3>Post in Discord</h3>
+        <p>Ask anything, however basic.</p>
+        <p class="tag">#qff-help-chat</p>
+      </div>
+      <div class="card res">
+        <img class="qr" src="img/resources-qr.png" alt="QR code for the resources page" width="1140" height="1140">
         <h3>Check the resources</h3>
-        <p>Qiskit 101 and Python 101 notebooks.</p>
-        <p class="tag">qff.quantumuts.com/<wbr>resources.html</p>
+        <p>Notebooks, Qiskit docs and an example game.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  <section class="submit" aria-labelledby="submit-title">
+    <h2 id="submit-title">Done? Submit</h2>
+    <div class="card sub">
+      <img class="qr" src="img/submit-qr.png" alt="QR code for the game submission form" width="1140" height="1140">
+      <h3>Submit your game</h3>
+      <p>Push your final commit, then scan before 6:00&nbsp;PM. No changes after that.</p>
+    </div>
+  </section>
+</div>
 
 <script>
 // 7 Oct 2026, 6:00 PM Sydney time (AEDT, UTC+11)
