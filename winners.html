@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Quantum Game Jam Winners</title>
+<link rel="icon" href="img/favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0d0520;overflow:hidden}
+h1,h2,h3,p{margin:0}
+img,svg{display:block}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;overflow:hidden}
+.slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;color:#F2F4F8;font-family:'IBM Plex Sans',Arial,sans-serif;
+  background:radial-gradient(circle at 26% 50%, var(--glow), #1b0a3f 62%)}
+.slide:not(.active){display:none !important}
+#confetti{position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:5}
+#hud{position:fixed;right:16px;bottom:12px;color:#C9C2E3;font:13px "IBM Plex Mono",monospace;opacity:.7;user-select:none}
+
+/* per-place colours */
+.p1{--accent:#F0C030;--accent2:#F0862C;--glow:#5a2a8a;--shadow:#A56EFF}
+.p2{--accent:#FF7EB6;--accent2:#FF5FA8;--glow:#4a1a7a;--shadow:#6A2BE0}
+.p3{--accent:#A56EFF;--accent2:#7FD3FF;--glow:#3a1880;--shadow:#FF7EB6}
+
+/* spinning sunburst behind the numeral */
+.rays{position:absolute;left:520px;top:540px;width:2600px;height:2600px;margin:-1300px 0 0 -1300px;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--accent) 22%, transparent) 0 9deg, transparent 9deg 18deg);
+  -webkit-mask:radial-gradient(circle, #000 8%, transparent 52%);mask:radial-gradient(circle, #000 8%, transparent 52%);
+  animation:spin 70s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* the big place numeral */
+.rank{position:absolute;left:120px;top:150px;width:800px;height:780px;display:flex;align-items:center;justify-content:center;
+  animation:pop .9s cubic-bezier(.2,1.6,.4,1) both .15s}
+.rank b{font-size:620px;font-weight:700;line-height:1;letter-spacing:-30px;color:var(--accent);
+  text-shadow:16px 16px 0 var(--shadow), 32px 32px 0 rgba(13,5,32,.55)}
+.rank sup{font-size:160px;font-weight:700;color:#F2F4F8;align-self:flex-start;margin:150px 0 0 20px;letter-spacing:-4px;
+  text-shadow:8px 8px 0 var(--shadow);animation:wiggle 2.4s ease-in-out infinite 1.2s}
+@keyframes pop{0%{transform:scale(.15) rotate(-18deg);opacity:0}100%{transform:scale(1) rotate(-6deg);opacity:1}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}50%{transform:rotate(8deg) scale(1.06)}}
+
+/* right-hand copy */
+.copy{position:absolute;left:940px;top:150px;width:860px;height:780px;display:flex;flex-direction:column;justify-content:center;gap:40px}
+.copy > *{animation:rise .7s cubic-bezier(.2,1.3,.4,1) both}
+.eyebrow{font-family:'IBM Plex Mono','Courier New',monospace;font-size:28px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);animation-delay:.5s !important}
+.place-row{display:flex;align-items:center;gap:28px;animation-delay:.65s !important}
+.place{font-size:64px;font-weight:700;letter-spacing:-1px}
+.prize{font-family:'IBM Plex Mono','Courier New',monospace;font-size:52px;font-weight:500;color:#1b0a3f;padding:6px 30px;border-radius:999px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));transform:rotate(-3deg);box-shadow:6px 6px 0 var(--shadow)}
+.team{font-size:132px;font-weight:700;line-height:.98;letter-spacing:-4px;white-space:nowrap;
+  background:linear-gradient(90deg,#F2F4F8 0%,var(--accent) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(6px 6px 0 rgba(13,5,32,.6));animation-delay:.85s !important;padding-bottom:12px}
+.members{display:flex;flex-direction:column;gap:20px}
+.member{display:flex;align-items:center;gap:24px;padding:18px 40px 18px 18px;background:rgba(49,19,94,.85);border:3px solid var(--accent);border-radius:999px;
+  align-self:flex-start;box-shadow:8px 8px 0 var(--shadow);animation:rise .7s cubic-bezier(.2,1.3,.4,1) both}
+.member:nth-child(1){animation-delay:1.05s}
+.member:nth-child(2){animation-delay:1.2s;margin-left:60px}
+.avatar{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;font-size:44px;font-weight:700;color:#1b0a3f;
+  background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.member span{font-size:52px;font-weight:700;white-space:nowrap}
+@keyframes rise{0%{transform:translateY(60px) scale(.9);opacity:0}100%{transform:none;opacity:1}}
+
+/* floating stickers */
+.sticker{position:absolute;filter:drop-shadow(0 12px 24px rgba(0,0,0,.4));animation:bob 5s ease-in-out infinite}
+.sticker:nth-of-type(even){animation-duration:6.5s;animation-direction:reverse}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-24px) rotate(calc(var(--r,0deg) + 6deg))}}
+.spark{position:absolute;color:var(--accent);filter:drop-shadow(0 0 14px var(--accent));animation:twinkle 1.8s ease-in-out infinite}
+@keyframes twinkle{0%,100%{transform:scale(.7) rotate(0);opacity:.6}50%{transform:scale(1.15) rotate(45deg);opacity:1}}
+
+.foot{position:absolute;left:128px;bottom:56px;width:1664px;display:flex;justify-content:space-between;
+  font-family:'IBM Plex Mono','Courier New',monospace;font-size:24px;color:#C9C2E3}
+
+/* teaser */
+.tease{--accent:#F0C030;--accent2:#F0862C;--glow:#4a1a7a;--shadow:#A56EFF;background:radial-gradient(circle at 50% 30%, var(--glow), #1b0a3f 65%)}
+.tease .rays{left:960px;top:330px}
+.tease-head{position:absolute;left:0;right:0;top:110px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+.tease-head .eyebrow{color:#FF7EB6;animation:rise .7s cubic-bezier(.2,1.3,.4,1) both .1s}
+.tease-head h1{font-size:150px;font-weight:700;line-height:.95;letter-spacing:-5px;text-shadow:10px 10px 0 #6A2BE0;animation:popflat .9s cubic-bezier(.2,1.6,.4,1) both .25s}
+.tease-head h1 em{font-style:normal;background:linear-gradient(90deg,#F0C030,#FF7EB6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:none;filter:drop-shadow(10px 10px 0 #6A2BE0)}
+.dots span{display:inline-block;animation:dot 1.4s ease-in-out infinite}
+.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+@keyframes dot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-36px)}}
+.podium{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;align-items:flex-end;gap:36px}
+.pod{width:380px;border-radius:32px 32px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;padding-top:28px;
+  background:linear-gradient(180deg,var(--c),color-mix(in srgb,var(--c) 40%,#1b0a3f));box-shadow:inset 0 10px 0 rgba(255,255,255,.25);
+  animation:grow .8s cubic-bezier(.2,1.4,.4,1) both}
+.pod b{font-size:150px;font-weight:700;line-height:1;color:#1b0a3f;animation:wiggle 1.6s ease-in-out infinite}
+.pod span{font-family:'IBM Plex Mono','Courier New',monospace;font-size:34px;font-weight:500;color:#1b0a3f}
+.pod.q2{--c:#FF7EB6;height:330px;animation-delay:.6s}.pod.q2 b{animation-delay:.3s}
+.pod.q1{--c:#F0C030;height:430px;animation-delay:.8s}
+.pod.q3{--c:#A56EFF;height:250px;animation-delay:.4s}.pod.q3 b{animation-delay:.6s}
+@keyframes popflat{0%{transform:scale(.15) rotate(-12deg);opacity:0}100%{transform:scale(1) rotate(-2deg);opacity:1}}
+@keyframes grow{0%{transform:translateY(100%)}100%{transform:none}}
+.pool{position:absolute;left:0;right:0;margin:auto;width:fit-content;top:370px;white-space:nowrap;font-family:'IBM Plex Mono','Courier New',monospace;font-size:44px;font-weight:500;color:#1b0a3f;padding:10px 34px;border-radius:999px;
+  background:linear-gradient(90deg,#F0C030,#F0862C);box-shadow:8px 8px 0 #A56EFF;animation:popflat .9s cubic-bezier(.2,1.6,.4,1) both 1.1s}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important}}
+</style>
+</head>
+<body>
+<div id="stage">
+<canvas id="confetti" width="1920" height="1080"></canvas>
+<section class="slide tease" id="tease">
+<div class="rays"></div>
+<img class="sticker" src="img/sticker-flamingo.svg" alt="" style="left:110px;top:560px;width:210px;--r:-10deg">
+<img class="sticker" src="img/sticker-hummingbirds.svg" alt="" style="left:1620px;top:560px;width:200px;--r:8deg">
+<div class="tease-head">
+<p class="eyebrow">Qiskit Fall Fest 2026 @ UTS · Awards</p>
+<h1>And the <em>winners</em> are<span class="dots"><span>.</span><span>.</span><span>.</span></span></h1>
+</div>
+<p class="pool">A$300 up for grabs</p>
+<div class="podium">
+<div class="pod q2"><b>?</b><span>2nd</span></div>
+<div class="pod q1"><b>?</b><span>1st</span></div>
+<div class="pod q3"><b>?</b><span>3rd</span></div>
+</div>
+</section>
+</div>
+<div id="hud"></div>
+<script>
+// Teaser first, then 3rd → 2nd → 1st for the reveal.
+const WINNERS = [
+  {id:'third',  cls:'p3', n:'3', sup:'rd', place:'Third place',  prize:'$50',  team:'Jordan',            members:['Daniel Lukins', 'Hyungeuk Kim']},
+  {id:'second', cls:'p2', n:'2', sup:'nd', place:'Second place', prize:'$100', team:'The Cat Who Lived', members:['Abdullah Tekin', 'Aditya Dupare']},
+  {id:'first',  cls:'p1', n:'1', sup:'st', place:'First place',  prize:'$150', team:'Quantumania',       members:['Nicholas Stornelli', 'Thomas Alberry']},
+];
+const STICKERS = {
+  third:  [['sticker-bluebird.svg',1560,70,210,-10],['sticker-wave.svg',80,760,190,12]],
+  second: [['sticker-hummingbirds.svg',1580,60,230,8],['sticker-birds.svg',70,730,200,-8]],
+  first:  [['sticker-flamingo.svg',1570,50,250,10],['badge-pink.svg',90,740,180,-12],['sticker-hummingbirds.svg',1700,780,170,-6]],
+};
+
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const spark = (x,y,w,d) => `<svg class="spark" style="left:${x}px;top:${y}px;width:${w}px;animation-delay:${d}s" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>`;
+const stage = document.getElementById('stage');
+for (const w of WINNERS) {
+  const s = document.createElement('section');
+  s.className = 'slide ' + w.cls;
+  s.id = w.id;
+  s.innerHTML = `
+    <div class="rays"></div>
+    ${STICKERS[w.id].map(([f,x,y,size,r]) => `<img class="sticker" src="img/${f}" alt="" style="left:${x}px;top:${y}px;width:${size}px;--r:${r}deg">`).join('')}
+    ${spark(860,140,56,0)}${spark(1820,520,40,.6)}${spark(180,120,44,1.1)}${spark(880,880,34,.3)}
+    <div class="rank"><b>${w.n}</b><sup>${w.sup}</sup></div>
+    <div class="copy">
+      <p class="eyebrow">Quantum Game Jam · Winners</p>
+      <div class="place-row"><h2 class="place">${w.place}</h2><span class="prize">${w.prize}</span></div>
+      <h1 class="team">${esc(w.team)}</h1>
+      <div class="members">${w.members.map(m => `<div class="member"><div class="avatar">${esc(m.trim()[0] || '?')}</div><span>${esc(m)}</span></div>`).join('')}</div>
+    </div>
+    <p class="foot"><span>Qiskit Fall Fest 2026 @ UTS</span><span>Awards &amp; group photo</span></p>`;
+  stage.appendChild(s);
+}
+
+// shrink long team / member names so they never spill off the slide
+function fitText(el, max) {
+  el.style.fontSize = '';
+  let size = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollWidth > max && size > 40) el.style.fontSize = (size -= 4) + 'px';
+}
+
+// confetti
+const cv = document.getElementById('confetti'), cx = cv.getContext('2d');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let bits = [], raf = 0;
+function burst(colors, count) {
+  if (reduced) return;
+  for (let k = 0; k < count; k++) {
+    const fromLeft = k % 2 === 0;
+    bits.push({
+      x: fromLeft ? -20 : 1940, y: 700 + Math.random() * 300,
+      vx: (fromLeft ? 1 : -1) * (8 + Math.random() * 16), vy: -(18 + Math.random() * 20),
+      w: 14 + Math.random() * 16, h: 8 + Math.random() * 10,
+      a: Math.random() * 6.28, va: (Math.random() - .5) * .4,
+      c: colors[k % colors.length], round: Math.random() < .3,
+    });
+  }
+  if (!raf) raf = requestAnimationFrame(tick);
+}
+function tick() {
+  cx.clearRect(0, 0, 1920, 1080);
+  for (const b of bits) {
+    b.vy += .55; b.vx *= .985; b.x += b.vx; b.y += b.vy; b.a += b.va;
+    cx.save(); cx.translate(b.x, b.y); cx.rotate(b.a); cx.fillStyle = b.c;
+    if (b.round) { cx.beginPath(); cx.arc(0, 0, b.h / 1.4, 0, 6.28); cx.fill(); }
+    else cx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h * Math.abs(Math.cos(b.a * 2)) + 2);
+    cx.restore();
+  }
+  bits = bits.filter(b => b.y < 1200);
+  raf = bits.length ? requestAnimationFrame(tick) : 0;
+}
+
+const slides = [...document.querySelectorAll('.slide')], hud = document.getElementById('hud');
+let i = Math.max(0, slides.findIndex(s => '#' + s.id === location.hash));
+function fit(){const k=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${k})`;}
+function show(n){
+  i = Math.min(slides.length-1, Math.max(0, n));
+  slides.forEach((s,j) => s.classList.toggle('active', j===i));
+  const s = slides[i];
+  history.replaceState(null,'','#'+s.id);
+  hud.textContent = `${i+1} / ${slides.length} · ←/→ navigate · C confetti · F fullscreen`;
+  if (s.id === 'tease') return;
+  fitText(s.querySelector('.team'), 860);
+  s.querySelectorAll('.member span').forEach(el => fitText(el, 600));
+  const first = s.id === 'first';
+  setTimeout(() => burst(['#F0C030','#FF7EB6','#A56EFF','#F0862C','#7FD3FF','#F2F4F8'], first ? 320 : 160), 350);
+  if (first) setTimeout(() => burst(['#F0C030','#F0862C','#F2F4F8'], 220), 1400);
+}
+addEventListener('resize', fit);
+addEventListener('keydown', e => {
+  if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1)}
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();show(i-1)}
+  else if(e.key==='Home')show(0);
+  else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='c'||e.key==='C')burst(['#F0C030','#FF7EB6','#A56EFF','#F0862C','#7FD3FF'],260);
+  else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+});
+addEventListener('click', e => {show(e.clientX<innerWidth/3?i-1:i+1)});
+fit(); show(i);
+</script>
+</body>
+</html>
